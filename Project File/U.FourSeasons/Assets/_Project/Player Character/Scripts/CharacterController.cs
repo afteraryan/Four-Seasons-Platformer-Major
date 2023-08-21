@@ -11,6 +11,10 @@ public class CharacterController : MonoBehaviour
     [SerializeField] private Transform groundCheckPoint;
     [SerializeField] private float groundCheckRadius = 0.2f;
     [SerializeField] private LayerMask whatIsGround;
+    
+    [Header("Joystick")]
+    [SerializeField] private Joystick joystick;
+
 
     private Rigidbody2D rb;
     private bool isGrounded;
@@ -43,15 +47,8 @@ public class CharacterController : MonoBehaviour
         isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, groundCheckRadius, whatIsGround);
     }
 
-    private void HandleInput()
-    {
-        input.Horizontal = Input.GetAxis("Horizontal");
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            input.JumpRequested = true;
-        }
-    }
-
+    
+    
     private void Move()
     {
         Vector2 velocity = new Vector2(input.Horizontal * moveSpeed, rb.velocity.y);
@@ -63,4 +60,26 @@ public class CharacterController : MonoBehaviour
             input.JumpRequested = false;
         }
     }
+
+    #region Input Handling
+
+    private void HandleInput()
+    {
+        // Use joystick input instead of Unity's default input system
+        input.Horizontal = joystick.Horizontal;
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            input.JumpRequested = true;
+        }
+    }
+    public void OnJumpButtonPressed()
+    {
+        if (isGrounded)
+        {
+            input.JumpRequested = true;
+        }
+    }
+    #endregion
+
 }
