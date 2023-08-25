@@ -101,12 +101,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  jumpForce: 8
+  maxJumpDuration: 0
+  lowJumpForce: 30
+  midJumpForce: 60
+  minMidJumpDuration: 0.5
+  highJumpForce: 90
+  minHighJumpDuration: 1
   groundCheckPoint: {fileID: 3836342522370315242}
   groundCheckRadius: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
+  raycastLength: 0.3
+  raycastSideOffset: 0.5
+  joystick: {fileID: 0}
 --- !u!50 &3917501036735001256
 Rigidbody2D:
   serializedVersion: 4
@@ -119,8 +127,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
+  m_Mass: 10
+  m_LinearDrag: 0.1
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
