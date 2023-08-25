@@ -101,14 +101,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  maxJumpDuration: 0
-  lowJumpForce: 30
+  lowJumpForce: 45
   midJumpForce: 60
   minMidJumpDuration: 0.5
   highJumpForce: 90
   minHighJumpDuration: 1
+  horizontalJumpBoost: 1000
+  jumpFallingForce: 18
+  fallingTerminalVelocity: 1
   groundCheckPoint: {fileID: 3836342522370315242}
-  groundCheckRadius: 0.2
   whatIsGround:
     serializedVersion: 2
     m_Bits: 8
@@ -128,8 +129,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 10
-  m_LinearDrag: 0.1
-  m_AngularDrag: 0.05
+  m_LinearDrag: 0
+  m_AngularDrag: 0
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 1

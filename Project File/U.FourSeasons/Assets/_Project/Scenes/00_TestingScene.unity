@@ -1021,6 +1021,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 3917501036735001256, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: m_LinearDrag
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8600220561045427999, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -1074,8 +1078,36 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: lowJumpForce
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: midJumpForce
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: highJumpForce
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: maxJumpDuration
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: jumpFallingForce
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: minMidJumpDuration
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: horizontalJumpBoost
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
+      propertyPath: fallingTerminalVelocity
+      value: 7.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
