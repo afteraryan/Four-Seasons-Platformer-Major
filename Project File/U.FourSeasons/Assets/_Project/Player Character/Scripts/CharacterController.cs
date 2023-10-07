@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -11,16 +12,24 @@ public class CharacterController : MonoBehaviour
     
     [Header("Jump Parameters")]
     //[SerializeField] private float jumpForce;
-    [SerializeField] private float lowJumpForce = 1;
-    [SerializeField] private float midJumpForce = 2;
+    [SerializeField] private float normalJumpHeight = 1;
+    [SerializeField] private float JumpLaunchVelocity = 1;
+    [SerializeField] private float JumpHorizontalLaunchVelocity = 1;
+    [SerializeField] private float lowJumpForceRatio = 1;
+    [SerializeField] private float midJumpForceRatio = 2;
+    [SerializeField] private float highJumpForceRatio = 3;
+    [SerializeField] private float jumpForceMultiplier = 10f;
     [SerializeField] private float minMidJumpDuration = 2;
-    [SerializeField] private float highJumpForce = 3;
     [SerializeField] private float minHighJumpDuration = 2;
     [SerializeField] private float horizontalJumpBoost = 2.0f; // Boost in horizontal velocity during jump
     [SerializeField] private float jumpApexBoostDivideFactor = 6.0f; // Boost in horizontal velocity during jump
+    [SerializeField] private float movementReductionDuration = 0.5f; // Duration over which movement is reduced to 0
     private float jumpCooldown = 0f;
     private const float JumpCooldownDuration = 0.5f; // Adjust this value as needed
-    private float verticalForce = 0f;
+    private float verticalForceRatio = 0f;
+    private float jumpMovementMultiplier = 1;          //Stops movement while jumping
+    private float movementReductionTimer = 1f; // Timer to track the reduction duration
+    private float jumpStartHeight; // Timer to track the reduction duration
     
     [Header("Fall Parameters")]
     [SerializeField] private float jumpFallingForce = 1.5f;
@@ -30,6 +39,7 @@ public class CharacterController : MonoBehaviour
     private float currentFallingForce = 0f;
     private const float ForceLerpDuration = 1f; // Adjust this value as needed
     private float forceLerpTimer = 0f;
+    private bool isFalling = false;
 
 
     private bool hasAppliedDownwardForce = false;
@@ -50,15 +60,23 @@ public class CharacterController : MonoBehaviour
     private InputData input;
     private float jumpButtonPressTime; // Time when the jump button was pressed
 
+    private CharacterAnimationController animationController = new CharacterAnimationController();
+
     private struct InputData
     {
         public float Horizontal;
         public bool JumpRequested;
     }
 
+    private void Awake()
+    {
+        animationController.SetAnimator(GetComponent<Animator>());
+    }
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animationController.SetAnimationState(CharacterMovementState.Idle);
     }
 
     private void Update()
@@ -74,6 +92,13 @@ public class CharacterController : MonoBehaviour
             jumpCooldown -= Time.fixedDeltaTime;
         }
 
+        // Gradually reduce movement when jump button is pressed
+        if (movementReductionTimer < movementReductionDuration)
+        {
+            movementReductionTimer += Time.fixedDeltaTime;
+            jumpMovementMultiplier = Mathf.Lerp(1f, 0f, movementReductionTimer / movementReductionDuration);
+        }
+
         CalculateDirection();
         Move();
         Fall();
@@ -82,6 +107,7 @@ public class CharacterController : MonoBehaviour
     
     private void CheckIfInAir()
     {
+        //Hawa main hai kya ?
         Vector2 centerPoint = groundCheckPoint.position;
         Vector2 leftPoint = centerPoint + Vector2.left * raycastSideOffset;
         Vector2 rightPoint = centerPoint + Vector2.right * raycastSideOffset;
@@ -90,7 +116,7 @@ public class CharacterController : MonoBehaviour
         bool leftHit = Physics2D.Raycast(leftPoint, Vector2.down, raycastLength, whatIsGround);
         bool rightHit = Physics2D.Raycast(rightPoint, Vector2.down, raycastLength, whatIsGround);
 
-        /* Debug rays
+        // Debug rays
         Color centerColor = centerHit ? Color.green : Color.red;
         Color leftColor = leftHit ? Color.green : Color.red;
         Color rightColor = rightHit ? Color.green : Color.red;
@@ -98,7 +124,6 @@ public class CharacterController : MonoBehaviour
         Debug.DrawRay(centerPoint, Vector2.down * raycastLength, centerColor);
         Debug.DrawRay(leftPoint, Vector2.down * raycastLength, leftColor);
         Debug.DrawRay(rightPoint, Vector2.down * raycastLength, rightColor);
-        */
         
         isInAir = !(centerHit || leftHit || rightHit);
     }
@@ -131,6 +156,8 @@ public class CharacterController : MonoBehaviour
         {
             jumpButtonPressTime = Time.time;
         }
+
+        movementReductionTimer = 0;
     }
 
     // ReSharper disable Unity.PerformanceAnalysis
@@ -142,6 +169,9 @@ public class CharacterController : MonoBehaviour
             float timeDifferenceJump = Time.time - jumpButtonPressTime;
             Jump(timeDifferenceJump);
         }
+
+        jumpMovementMultiplier = 1;
+        movementReductionTimer = 1;
     }
 
     #endregion
@@ -150,16 +180,37 @@ public class CharacterController : MonoBehaviour
 
     
     // ReSharper disable Unity.PerformanceAnalysis
+    private float lastDirection = 1f; // Default direction is right (positive x-axis)
+
     private void Move()
     {
         // Only allow horizontal movement if not in air and not in jump cooldown
         if (!isInAir && jumpCooldown <= 0f)
         {
-            Vector2 velocity = new Vector2((input.Horizontal * moveSpeed), rb.velocity.y);
+            float horizontalInput = input.Horizontal;
+
+            // Store the last direction of motion when input is given
+            if (Mathf.Abs(horizontalInput) > 0.01f)
+            {
+                lastDirection = Mathf.Sign(horizontalInput);
+            }
+
+            Vector2 velocity = new Vector2((horizontalInput * moveSpeed * jumpMovementMultiplier), rb.velocity.y);
             rb.velocity = velocity;
-            hasAppliedDownwardForce = false;  // Reset the flag when not in air
+            hasAppliedDownwardForce = false;  // Reset the flag when not in the air
         }
+
+        // Set the character's scale based on the last direction of motion
+        Vector3 characterScale = transform.localScale;
+        characterScale.x = lastDirection;
+        transform.localScale = characterScale;
+
+        if (rb.velocity.x == 0)
+            animationController.SetAnimationState(CharacterMovementState.Idle);
+        else
+            animationController.SetAnimationState(CharacterMovementState.Running);
     }
+
 
     private void Fall()
     {
@@ -171,7 +222,14 @@ public class CharacterController : MonoBehaviour
             return;
         }
     
-        bool isFalling = rb.velocity.y < 0;
+        //bool isFalling = rb.velocity.y < 0;
+        
+
+        if (transform.position.y > jumpStartHeight + normalJumpHeight)
+        {
+            isFalling = true;
+            //rb.velocity = new Vector2(rb.velocity.x, 0);
+        }
 
         if (isFalling)
         {
@@ -183,12 +241,15 @@ public class CharacterController : MonoBehaviour
 
             if (!hasAppliedDownwardForce)
             {
+                //Direction Control at Apex
                 if (!hasAppliedHorizontalJumpBoost)
                 {
-                    rb.AddForce(new Vector2((verticalForce*Direction.x)/jumpApexBoostDivideFactor, 0), ForceMode2D.Impulse);
+                    rb.AddForce(new Vector2((verticalForceRatio*jumpForceMultiplier*input.Horizontal)/jumpApexBoostDivideFactor, 0), ForceMode2D.Impulse);
                     hasAppliedHorizontalJumpBoost = true;
                 }
-                // Use the logarithmic function
+                
+                
+                // Jump Flow - Use the logarithmic function
                 if (forceLerpTimer < ForceLerpDuration)
                 {
                     forceLerpTimer += Time.fixedDeltaTime;
@@ -210,26 +271,26 @@ public class CharacterController : MonoBehaviour
             }
         } 
     }
-
-
-
     
     private void Jump(float timeDifference)
     {
-        verticalForce = 0f;
+        verticalForceRatio = 0f;
         if (timeDifference < minMidJumpDuration)
-            verticalForce = lowJumpForce;
+            verticalForceRatio = lowJumpForceRatio;
         else if(timeDifference >= minMidJumpDuration && timeDifference < minHighJumpDuration)
-            verticalForce = midJumpForce;
+            verticalForceRatio = midJumpForceRatio;
         else if(timeDifference >= minHighJumpDuration)
-            verticalForce = highJumpForce;
+            verticalForceRatio = highJumpForceRatio;
 
         // Calculate the horizontal force based on the direction of movement
         float horizontalForce = input.Horizontal * horizontalJumpBoost;
         
         // Apply the forces
-        rb.AddForce(new Vector2(horizontalForce, verticalForce), ForceMode2D.Impulse);
-        
+        //rb.AddForce(new Vector2(horizontalForce, verticalForceRatio*jumpForceMultiplier), ForceMode2D.Impulse);
+        jumpStartHeight = transform.position.y;
+        //rb.AddForce(new Vector2(horizontalForce, JumpLaunchForce), ForceMode2D.Impulse);
+        rb.velocity = new Vector2(input.Horizontal*JumpHorizontalLaunchVelocity, JumpLaunchVelocity);
+
         jumpCooldown = JumpCooldownDuration;
         hasAppliedHorizontalJumpBoost = false;
         input.JumpRequested = false;
@@ -269,4 +330,6 @@ public class CharacterController : MonoBehaviour
 
 
     #endregion
+    
+    
 }
