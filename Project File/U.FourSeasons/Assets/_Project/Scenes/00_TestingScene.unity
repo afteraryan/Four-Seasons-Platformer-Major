@@ -738,7 +738,7 @@ Camera:
   far clip plane: 1000
   field of view: 28.072487
   orthographic: 1
-  orthographic size: 9.78
+  orthographic size: 4.68
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -762,8 +762,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 795982663}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19575088, y: -0.004426713, z: 0.0008836372, w: 0.9806433}
-  m_LocalPosition: {x: -14.52, y: 4.9500003, z: -10}
+  m_LocalRotation: {x: 0.19463351, y: -0.001465414, z: 0.00029077986, w: 0.9808749}
+  m_LocalPosition: {x: -14.35, y: 4.73, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2873,7 +2873,7 @@ MonoBehaviour:
   m_Follow: {fileID: 1100930315}
   m_Lens:
     FieldOfView: 28.072487
-    OrthographicSize: 9.78
+    OrthographicSize: 4.68
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2898,8 +2898,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1000691221}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.19575088, y: -0.004426713, z: 0.0008836372, w: 0.9806433}
-  m_LocalPosition: {x: -14.52, y: 4.9500003, z: -10}
+  m_LocalRotation: {x: 0.19463351, y: -0.001465414, z: 0.00029077986, w: 0.9808749}
+  m_LocalPosition: {x: -14.35, y: 4.73, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3098,7 +3098,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.42, y: 3.02}
+    oldSize: {x: 1.98935, y: 2.51}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -4655,11 +4655,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3836342522370315242, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.244
+      value: -0.06
       objectReference: {fileID: 0}
     - target: {fileID: 3836342522370315242, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.495
+      value: -0.93
       objectReference: {fileID: 0}
     - target: {fileID: 3917501036735001256, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_LinearDrag
@@ -4675,11 +4675,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8288186669078757712, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_Size.x
-      value: 0.9194279
+      value: 0.5082283
       objectReference: {fileID: 0}
     - target: {fileID: 8288186669078757712, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_Size.y
-      value: 1.8272834
+      value: 1.2393312
       objectReference: {fileID: 0}
     - target: {fileID: 8288186669078757712, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_Enabled
@@ -4687,19 +4687,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8288186669078757712, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_Offset.x
-      value: -0.2439146
+      value: -0.06488514
       objectReference: {fileID: 0}
     - target: {fileID: 8288186669078757712, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_Offset.y
-      value: -0.57750225
+      value: -0.28352606
       objectReference: {fileID: 0}
     - target: {fileID: 8288186669078757712, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 1.42
+      value: 1.98935
       objectReference: {fileID: 0}
     - target: {fileID: 8288186669078757712, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 3.02
+      value: 2.51
       objectReference: {fileID: 0}
     - target: {fileID: 8600220561045427999, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_RootOrder
@@ -4719,11 +4719,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600220561045427999, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.52
+      value: -14.35
       objectReference: {fileID: 0}
     - target: {fileID: 8600220561045427999, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.86
+      value: 0.64
       objectReference: {fileID: 0}
     - target: {fileID: 8600220561045427999, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4811,7 +4811,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: raycastSideOffset
-      value: 0.46
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 9012175445464677119, guid: 4b22e091c4fb92045a64b89f94ce38bb, type: 3}
       propertyPath: JumpLaunchVelocity

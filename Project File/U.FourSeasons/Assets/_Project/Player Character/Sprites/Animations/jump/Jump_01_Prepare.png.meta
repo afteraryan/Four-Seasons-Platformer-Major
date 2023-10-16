@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 93efd1628e687174fa956316913d0d57
+guid: 285ad6da3b30ca347891f470b1bf73e7
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,7 +81,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Standalone
+    buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -94,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: Server
+    buildTarget: Standalone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -120,20 +120,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
+    buildTarget: Server
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -149,13 +136,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Idle_anim_0
+      name: Jump_01_Prepare_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -163,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 50957adf6ad30224a8387864ae122795
-      internalID: -1633648873
+      spriteID: 2bc0bb93e06802f4d891385155ea4d99
+      internalID: -355894864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_1
+      name: Jump_01_Prepare_1
       rect:
         serializedVersion: 2
-        x: 198
+        x: 256
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,20 +171,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e4847d1f25fb56443b50c685520c7f2d
-      internalID: -1521210850
+      spriteID: 2766f0f813ce6674a8e2fba49e257e6b
+      internalID: -1776150696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_2
+      name: Jump_01_Prepare_2
       rect:
         serializedVersion: 2
-        x: 396
+        x: 512
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -205,20 +192,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f6e28c3c259f2f4418eb17b00da661fe
-      internalID: 621107548
+      spriteID: bb0af02117ddbee4ba1fdf25c67c042f
+      internalID: -499540203
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_3
+      name: Jump_01_Prepare_3
       rect:
         serializedVersion: 2
-        x: 594
+        x: 768
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -226,20 +213,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ad0fdaac5ec9859418fbae2be5f807b0
-      internalID: 1521862492
+      spriteID: 770695b8cfd9c1142add55dbab4b143f
+      internalID: -1922816209
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_4
+      name: Jump_01_Prepare_4
       rect:
         serializedVersion: 2
-        x: 792
+        x: 1024
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -247,20 +234,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c90f112778500db419f035a99753b9a9
-      internalID: 1944056863
+      spriteID: 0eba04a3b9cfa32488fa9f0d05ee103e
+      internalID: 941865371
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_5
+      name: Jump_01_Prepare_5
       rect:
         serializedVersion: 2
-        x: 990
+        x: 1280
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -268,20 +255,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3610132b78fca954c9d3b45676ec1175
-      internalID: 595523467
+      spriteID: 3b330f434d086194692fd26abf8dd22f
+      internalID: -1613425466
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_6
+      name: Jump_01_Prepare_6
       rect:
         serializedVersion: 2
-        x: 1188
+        x: 1536
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -289,20 +276,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 43343ee132769114f91b041d8252f8db
-      internalID: 1558190812
+      spriteID: 58208e16178ed8b4794a9fb4f89ebb79
+      internalID: 1246139828
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_7
+      name: Jump_01_Prepare_7
       rect:
         serializedVersion: 2
-        x: 1386
+        x: 1792
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -310,20 +297,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4e957672158d404f97f0abba8bd41b2
-      internalID: 1137622756
+      spriteID: 2664615a46c66854fb18674f8f5f6b19
+      internalID: 1596307485
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Idle_anim_8
+      name: Jump_01_Prepare_8
       rect:
         serializedVersion: 2
-        x: 1584
+        x: 2048
         y: 0
-        width: 198.70589
-        height: 251
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -331,176 +318,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 748dae14787395f428928f68eadd342e
-      internalID: -999655368
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_9
-      rect:
-        serializedVersion: 2
-        x: 1782
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 910ea471f9908444ba94c3c2201e48ae
-      internalID: 1300681319
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_10
-      rect:
-        serializedVersion: 2
-        x: 1980
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ea746449a2095b847b5e36fda3f343b6
-      internalID: -1073151355
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_11
-      rect:
-        serializedVersion: 2
-        x: 2178
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e53537f753d244247af1292f0a06ac86
-      internalID: -1869898992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_12
-      rect:
-        serializedVersion: 2
-        x: 2376
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a060c249b60d4d84a9f3ef7796317827
-      internalID: -18540182
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_13
-      rect:
-        serializedVersion: 2
-        x: 2574
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 74add79b7923eeb4899cfb3404479f3f
-      internalID: -2137351436
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_14
-      rect:
-        serializedVersion: 2
-        x: 2772
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a325129037e78341bd2701733ceb4d0
-      internalID: -2033984881
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_15
-      rect:
-        serializedVersion: 2
-        x: 2970
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e2409206521fe44fb0ba8f40d818f79
-      internalID: -1749090467
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Idle_anim_16
-      rect:
-        serializedVersion: 2
-        x: 3168
-        y: 0
-        width: 198.70589
-        height: 251
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 22c401702d5912e4f8cdaf8b42ba13f3
-      internalID: 1804202431
+      spriteID: 925c5b224604e08459846da4235e3fd1
+      internalID: 1631957562
       vertices: []
       indices: 
       edges: []
@@ -516,23 +335,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Idle_anim_0: -1633648873
-      Idle_anim_1: -1521210850
-      Idle_anim_10: -1073151355
-      Idle_anim_11: -1869898992
-      Idle_anim_12: -18540182
-      Idle_anim_13: -2137351436
-      Idle_anim_14: -2033984881
-      Idle_anim_15: -1749090467
-      Idle_anim_16: 1804202431
-      Idle_anim_2: 621107548
-      Idle_anim_3: 1521862492
-      Idle_anim_4: 1944056863
-      Idle_anim_5: 595523467
-      Idle_anim_6: 1558190812
-      Idle_anim_7: 1137622756
-      Idle_anim_8: -999655368
-      Idle_anim_9: 1300681319
+      Jump_01_Prepare_0: -355894864
+      Jump_01_Prepare_1: -1776150696
+      Jump_01_Prepare_2: -499540203
+      Jump_01_Prepare_3: -1922816209
+      Jump_01_Prepare_4: 941865371
+      Jump_01_Prepare_5: -1613425466
+      Jump_01_Prepare_6: 1246139828
+      Jump_01_Prepare_7: 1596307485
+      Jump_01_Prepare_8: 1631957562
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

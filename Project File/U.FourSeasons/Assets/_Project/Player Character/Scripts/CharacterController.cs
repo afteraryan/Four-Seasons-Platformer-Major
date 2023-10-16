@@ -44,6 +44,8 @@ public class CharacterController : MonoBehaviour
 
     private bool hasAppliedDownwardForce = false;
     private bool hasAppliedHorizontalJumpBoost = false;
+    private bool wasInAirLastFrame = false;
+
 
     [Header("Ground Check Parameters")]
     [SerializeField] private Transform groundCheckPoint;
@@ -102,6 +104,7 @@ public class CharacterController : MonoBehaviour
         CalculateDirection();
         Move();
         Fall();
+        Landing();
     }
 
     
@@ -155,6 +158,7 @@ public class CharacterController : MonoBehaviour
         if (!isInAir)
         {
             jumpButtonPressTime = Time.time;
+            animationController.SetAnimationState(CharacterMovementState.Jump01Prepare);
         }
 
         movementReductionTimer = 0;
@@ -167,9 +171,9 @@ public class CharacterController : MonoBehaviour
         {
             input.JumpRequested = true;
             float timeDifferenceJump = Time.time - jumpButtonPressTime;
+            animationController.SetAnimationState(CharacterMovementState.Jump02Launch);
             Jump(timeDifferenceJump);
         }
-
         jumpMovementMultiplier = 1;
         movementReductionTimer = 1;
     }
@@ -205,10 +209,17 @@ public class CharacterController : MonoBehaviour
         characterScale.x = lastDirection;
         transform.localScale = characterScale;
 
-        if (rb.velocity.x == 0)
-            animationController.SetAnimationState(CharacterMovementState.Idle);
+        if (!isInAir)
+        {
+            if (rb.velocity.x == 0)
+                animationController.SetAnimationState(CharacterMovementState.Idle);
+            else
+                animationController.SetAnimationState(CharacterMovementState.Running);
+        }
         else
-            animationController.SetAnimationState(CharacterMovementState.Running);
+        {
+            animationController.SetAnimationState(CharacterMovementState.Jumping);
+        }
     }
 
 
@@ -244,6 +255,7 @@ public class CharacterController : MonoBehaviour
                 //Direction Control at Apex
                 if (!hasAppliedHorizontalJumpBoost)
                 {
+                    animationController.SetAnimationState(CharacterMovementState.Jump03Fall);
                     rb.AddForce(new Vector2((verticalForceRatio*jumpForceMultiplier*input.Horizontal)/jumpApexBoostDivideFactor, 0), ForceMode2D.Impulse);
                     hasAppliedHorizontalJumpBoost = true;
                 }
@@ -287,6 +299,7 @@ public class CharacterController : MonoBehaviour
         
         // Apply the forces
         //rb.AddForce(new Vector2(horizontalForce, verticalForceRatio*jumpForceMultiplier), ForceMode2D.Impulse);
+        animationController.SetAnimationState(CharacterMovementState.Jumping);
         jumpStartHeight = transform.position.y;
         //rb.AddForce(new Vector2(horizontalForce, JumpLaunchForce), ForceMode2D.Impulse);
         rb.velocity = new Vector2(input.Horizontal*JumpHorizontalLaunchVelocity, JumpLaunchVelocity);
@@ -328,6 +341,14 @@ public class CharacterController : MonoBehaviour
         }
     }
 
+    private void Landing()
+    {
+        if (wasInAirLastFrame && !isInAir)  // Checks if the character was in the air last frame but is no longer
+        {
+            animationController.SetAnimationState(CharacterMovementState.Jump04Land);
+        }
+        wasInAirLastFrame = isInAir;  // Store the current state for the next frame
+    }
 
     #endregion
     
