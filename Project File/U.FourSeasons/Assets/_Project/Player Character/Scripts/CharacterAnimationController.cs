@@ -22,6 +22,7 @@ public class CharacterAnimationController
         if (animator == null)
         {
             Debug.LogError("Animator is null");
+            //ihgu
             return;
         }
         movementState = newState;
