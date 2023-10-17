@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharacterController : MonoBehaviour
+public class Dep_CharacterController : MonoBehaviour
 {
     [Header("Movement Parameters")]
     [SerializeField] private float moveSpeed;
@@ -295,16 +295,14 @@ public class CharacterController : MonoBehaviour
             verticalForceRatio = highJumpForceRatio;
 
         // Calculate the horizontal force based on the direction of movement
-        float horizontalForce = CalculateHorizontalInputDirection() * horizontalJumpBoost;
+        float horizontalForce = input.Horizontal * horizontalJumpBoost;
         
         // Apply the forces
         //rb.AddForce(new Vector2(horizontalForce, verticalForceRatio*jumpForceMultiplier), ForceMode2D.Impulse);
-        //rb.AddForce(new Vector2(horizontalForce, JumpLaunchForce), ForceMode2D.Impulse);
-        //rb.velocity = new Vector2(input.Horizontal*JumpHorizontalLaunchVelocity, JumpLaunchVelocity);
-        jumpStartHeight = transform.position.y;
-        rb.velocity = new Vector2(horizontalForce, JumpLaunchVelocity);
-        Debug.Log("Horizontal Velocity: " + horizontalForce + ", Jump Launch Velocity: " + JumpLaunchVelocity);
         animationController.SetAnimationState(CharacterMovementState.Jumping);
+        jumpStartHeight = transform.position.y;
+        //rb.AddForce(new Vector2(horizontalForce, JumpLaunchForce), ForceMode2D.Impulse);
+        rb.velocity = new Vector2(input.Horizontal*JumpHorizontalLaunchVelocity, JumpLaunchVelocity);
 
         jumpCooldown = JumpCooldownDuration;
         hasAppliedHorizontalJumpBoost = false;
@@ -341,15 +339,6 @@ public class CharacterController : MonoBehaviour
         {
             Direction.y = 0; // No vertical movement
         }
-    }
-
-    private int CalculateHorizontalInputDirection()
-    {
-        if (input.Horizontal > 0)
-            return 1;
-        if (input.Horizontal < 0)
-            return -1;
-        return 0;
     }
 
     private void Landing()
